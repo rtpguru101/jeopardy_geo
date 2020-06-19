@@ -17,6 +17,7 @@ for tsv_file in tsv_files:
     df = pd.read_csv(tsv_file, sep='\t')
     df['category'] = df['category'].str.lower()
     df['answer'] = df['answer'].str.lower()
+    df['question'] = df['question'].str.lower()
     df['combined'] = df['category'] + ' ' + df['answer'] + ' ' + df['question']
     df_geo = df[df['combined'].str.match(categories_str) == True]
     df_geo = df_geo.drop(['round', 'value', 'daily_double', 'comments', 'combined', 'air_date', 'notes'], axis=1)
